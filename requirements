@@ -18,7 +18,9 @@ django-filter==23.5
 django-timezone-field==6.1.0
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.3.1
+dnspython==2.4.2
 drf-yasg==1.21.7
+eventlet==0.33.3
 filelock==3.13.1
 future==0.18.3
 gevent==23.9.1
@@ -29,6 +31,7 @@ kombu==5.3.4
 packaging==23.2
 Pillow==10.1.0
 prompt-toolkit==3.0.43
+psycopg2==2.9.9
 psycopg2-binary==2.9.9
 pycparser==2.21
 PyJWT==2.8.0
