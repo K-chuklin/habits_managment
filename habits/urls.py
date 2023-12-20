@@ -15,10 +15,10 @@ router = DefaultRouter()
 schema_view = get_schema_view(
     openapi.Info(
         title="Snippets API",
-        default_version="v1",
+        default_version="1.0",
         description="Test description",
         terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="contact@snippets.local"),
+        contact=openapi.Contact(email="admin@admin.pro"),
         license=openapi.License(name="BSD License"),
     ),
     public=True,
