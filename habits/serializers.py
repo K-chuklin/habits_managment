@@ -11,7 +11,7 @@ class HabitSerializer(serializers.ModelSerializer):
 
     def validate_frequency(self, value):
         if value > 7:
-            raise serializers.ValidationError("Привычку необходимо выполнять нереже, чем раз в неделю.")
+            raise serializers.ValidationError("Привычку необходимо выполнять не реже, чем раз в неделю.")
         return value
 
     def validate_associated_habit(self, value):
@@ -20,9 +20,9 @@ class HabitSerializer(serializers.ModelSerializer):
         return value
 
     def validate(self, data):
-        associated_habit = data.get("related_habit")
+        associated_habit = data.get("associated_habit")
         award = data.get("award")
-        is_positive = data.get("is_pleasant")
+        is_positive = data.get("is_positive")
 
         if associated_habit and award:
             raise serializers.ValidationError("Связанную привычку и вознаграждение нельзя выбирать одновременно")

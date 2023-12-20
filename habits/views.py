@@ -1,6 +1,6 @@
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
-
+from habits.permissions import IsOwner
 from habits.models import Habit
 from habits.serializers import HabitSerializer
 
@@ -9,7 +9,6 @@ class HabitListAPIView(generics.ListAPIView):
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
     permission_classes = [IsAuthenticated]
-
 
     def get_queryset(self):
         user = self.request.user

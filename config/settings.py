@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 dot_env = os.path.join(BASE_DIR, '.env')
 load_dotenv(dotenv_path=dot_env)
 # Quick-start development settings - unsuitable for production
@@ -85,8 +86,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'habits',
-        'USER': 'postgres',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('PSQL_PASSWORD')
     }
 }
@@ -156,8 +157,29 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
-# Настройка пагинации
+# Настройки пагинации
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 5
 }
+
+# брокер сообщений
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+
+# брокер результатов
+CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+
+CELERY_TIMEZONE = "UTC"
+
+# Отслеживание выполнения задач
+CELERY_TASK_TRACK_STARTED = True
+
+# Максимальное время на выполнение задачи
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+CORS_ALLOWED_ORIGINS = [
+    "https://read-only.example.com",
+    "https://read-and-write.example.com",
+]
+
+CSRF_TRUSTED_ORIGINS = ["https://read-and-write.example.com"]
