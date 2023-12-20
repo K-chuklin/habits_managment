@@ -10,7 +10,7 @@ class HabitAdmin(admin.ModelAdmin):
         "action",
         "place",
         "time",
-        "frequency",
+        "freq",
         "award",
         "is_positive",
         "is_public",
